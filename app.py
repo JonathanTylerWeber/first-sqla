@@ -13,6 +13,7 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = flask_debugtoolbardebug = DebugTool
 connect_db(app)
 
 @app.route('/')
-def home_page():
-    """Shows home page"""
-    return render_template('home.html')  
+def list_pets():
+    """Shows list of all pets in db"""
+    pets = Pet.query.all()
+    return render_template('list.html', pets=pets)  
